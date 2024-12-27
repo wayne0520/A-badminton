@@ -1,0 +1,377 @@
+/* 通用樣式 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding-top: 100px;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header 樣式 */
+/* ... 其他樣式 ... */
+
+/* Header 樣式 */
+header {
+    background-color: #f0f0f0;
+    padding: 20px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.logo {
+    float: left;
+    font-size: 24px;
+    font-weight: bold;
+    color: #d35e05;
+}
+
+nav {
+    float: right;
+}
+
+.main-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    transition: max-height 0.3s ease-in-out; /* 添加動畫過渡效果 */
+    max-height: 500px; /* 設定收起時的高度 */
+    overflow: hidden;
+}
+
+.main-nav li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.main-nav li a {
+    text-decoration: none;
+    color: #d35e05;
+    font-size: large;
+    font-style: italic;
+    transition: background-color 0.3s ease, color 0.3s ease; /* 添加 transition 效果 */
+    padding: 10px 15px; /* 可以增加 padding，使點擊區域更大 */
+    display: block; /* 讓 padding 生效 */
+}
+
+.main-nav li a:hover {
+    background-color: #d35e05; /* 滑鼠懸停時的背景顏色 */
+    color: #fff; /* 滑鼠懸停時的文字顏色 */
+}
+
+
+.triple-bar {
+    display: none;
+    cursor: pointer;
+}
+
+.triple-bar div {
+    width: 30px;
+    height: 4px;
+    background-color: #333;
+    margin: 6px 0;
+    transition: 0.4s; /* 添加動畫過渡效果 */
+}
+
+/* RWD 樣式 */
+@media (max-width: 768px) {
+    .main-nav {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-height: 0; /* 預設收起選單 */
+    }
+
+    .main-nav li {
+        margin-left: 0;
+        margin-bottom: 10px; /* 增加垂直間距 */
+        text-align: center; /* 文字置中 */
+    }
+
+    .triple-bar {
+        display: block;
+        margin-top: 5px;
+    }
+
+    /* 展開選單的樣式 */
+    .main-nav.open {
+        max-height: 500px; /* 展開選單的最大高度 */
+    }
+    /* Triple Bar 動畫 */
+    .open .triple-bar div:nth-child(1) {
+        transform: translateY(10px) rotate(45deg);
+    }
+
+    .open .triple-bar div:nth-child(2) {
+        opacity: 0;
+    }
+
+    .open .triple-bar div:nth-child(3) {
+        transform: translateY(-10px) rotate(-45deg);
+    }
+}
+
+
+/*Homepage*/
+.hero {
+    position: relative;
+    width: 100%;
+    height: 500px; /* 調整高度 */
+    margin-top: 0;
+    overflow: hidden;
+}
+
+.hero img {
+    width: 100%;
+    height: auto;
+    display: block;
+    opacity: 0; /* 初始透明度為 0 */
+    transition: opacity 1s ease-in-out; /* 淡入淡出效果 */
+}
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #d35e05(0, 0, 0, 0.5); /* 半透明遮罩 */
+    z-index: 1; /* 確保遮罩在圖片上方 */
+}
+
+/* 輪播圖樣式 */
+.famous-players {
+    padding: 100 0;
+}
+
+.carousel {
+    height: fill; /* 設定你期望的輪播圖高度，根據圖片高度調整 */
+    overflow: hidden; /* 隱藏超出高度的部分 */
+    position: relative; /* 如果需要對按鈕進行絕對定位 */
+    display: flex; /* 讓 .carousel-item 水平排列 */
+    
+}
+
+.carousel-item {
+    min-width: 100%; /* 每個 .carousel-item 佔滿容器寬度 */
+    transition: transform 0.5s ease-in-out; /* 平滑過渡效果 */
+}
+
+.carousel-item img {
+    width: 100%; /* 圖片寬度填滿 .carousel-item */
+    height: 100%; /* 圖片高度填滿 .carousel-item */
+    object-fit: cover; /* 保持圖片比例，並填滿容器 */
+    display: block; /* 移除圖片下方間隙 */
+}
+
+/* Footer 樣式 */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.social-icons a {
+    color: #fff;
+    margin: 0 10px;
+    font-size: 20px;
+}
+
+/* RWD 樣式 */
+@media (max-width: 1280px) {
+    /* 中螢幕樣式 */
+}
+
+@media (max-width: 768px) {
+    /* 小螢幕樣式 */
+    .main-nav {
+        display: none; /* 小螢幕隱藏選單 */
+    }
+
+    .triple-bar {
+        display: block; /* 小螢幕顯示 Triple Bar */
+    }
+}
+
+@media (max-width: 360px) {
+    /* 更小螢幕樣式 */
+}
+
+/* 淡入淡出效果 */
+.fade-in {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in.show {
+    opacity: 1;
+}
+
+/* 按鈕效果 */
+button {
+    background-color: #d35e05;
+    color: white;
+    padding: 50px 50px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #ffffff;
+}
+
+.prev,
+.next {
+    position: absolute;
+    top: 80%;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    background-color: rgb(227, 227, 227);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.prev {
+    left: 50px;
+    height: 100px;
+    width: 100px;
+}
+
+.next {
+    right: 50px;
+    height: 100px;
+    width: 100px;
+}
+
+
+/*TUTORIAL*/
+
+/* 技術教學影片樣式 */
+
+.video-tutorials h2 {
+    width: 50;
+    font-size: 50px;
+}
+
+
+
+.video-tutorials {
+    padding: 40px 0;
+}
+
+.video-container {
+    margin-bottom: 30px;
+}
+
+.video-container video {
+    width: 100%;
+    max-width: 800px; 
+    display: block;
+    margin: 0 auto;
+}
+
+.video-container h3 {
+    text-align: left;
+    font-size: 30px;
+   
+}
+
+/* 賽事規則樣式 */
+.rules {
+    padding: 40px 0;
+}
+.rules h2{
+    font-size: 50px;
+    text-align: justify;
+}
+
+.rules  p{
+    font-size: 25px;
+}
+.rules  ul {
+    list-style: disc;
+    text-align: start;
+    font-size: 20px;
+}
+
+/* RWD 調整 */
+@media (max-width: 768px) {
+    .video-container video {
+        max-width: 90%;
+    }
+}
+
+
+
+/*Event*/
+
+/* 賽事列表樣式 */
+.events {
+    padding: 40px 0;
+}
+
+.event-item {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.2s ease; /* 縮放效果 */
+}
+
+.event-item:hover {
+    transform: scale(1.05); 
+}
+
+.event-item img {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.event-info {
+    flex: 1;
+}
+
+.event-info h3 {
+    margin-top: 0;
+}
+
+.event-link {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.event-link:hover {
+    background-color: #45a049;
+}
+
+/* RWD 調整 */
+@media (max-width: 768px) {
+    .event-item {
+        flex-direction: column;
+    }
+
+    .event-item img {
+        width: 100%;
+        height: auto;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+}
